@@ -31,6 +31,7 @@ export interface Pokemon {
   }
   
   export interface Evolution {
+    id: string
     name: string
     image: string
     types: string[]

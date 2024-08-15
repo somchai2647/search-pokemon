@@ -20,9 +20,10 @@ const GetByName = gql`
         }
       }
       evolutions {
+        id
         name
-        image
         types
+        image
       }
     }
   }

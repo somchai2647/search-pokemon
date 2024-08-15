@@ -9,6 +9,7 @@ import { query } from "@/share/pokemon";
 import type { PokemonResponseSingle } from "@/interface/pokemon.interface";
 
 import TypePokemon from "@/components/TypePokemon";
+import MiniInfo from "@/components/MiniInfo";
 
 type Props = {};
 
@@ -32,7 +33,7 @@ export default function Details({}: Props) {
   return (
     <>
       {JSON.stringify(data)}
-      <div className="w-full grid grid-cols-2 rounded-xl overflow-hidden bg-white">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden bg-white">
         <div className="">
           <div className="flex justify-center p-6 ">
             <Image
@@ -50,6 +51,37 @@ export default function Details({}: Props) {
             <div className=" flex flex-wrap flex-row gap-4 ">
               {data.pokemon.types.map((type) => (
                 <TypePokemon type={type} key={type} />
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            <h2 className="text-3xl">Attacks</h2>
+            <div className="pl-4">
+              <h3 className="text-xl">Fast</h3>
+              <ul className="pl-3">
+                {data.pokemon.attacks.fast.map((attack) => (
+                  <li key={attack.name}>
+                    {attack.name} - {attack.damage}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="pl-4">
+              <h3 className="text-xl">Special</h3>
+              <ul className="pl-3">
+                {data.pokemon.attacks.special.map((attack) => (
+                  <li key={attack.name}>
+                    {attack.name} - {attack.damage}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-3xl">Evolutions</h2>
+            <div className="flex flex-row gap-4">
+              {data.pokemon.evolutions.map((evolution) => (
+               <MiniInfo pokemon={evolution} key={evolution.id} />
               ))}
             </div>
           </div>
