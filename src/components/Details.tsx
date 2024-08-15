@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
@@ -7,6 +7,8 @@ import { useQuery } from "@apollo/client";
 import { query } from "@/share/pokemon";
 
 import type { PokemonResponseSingle } from "@/interface/pokemon.interface";
+
+import TypePokemon from "@/components/TypePokemon";
 
 type Props = {};
 
@@ -30,16 +32,28 @@ export default function Details({}: Props) {
   return (
     <>
       {JSON.stringify(data)}
-      <div className="w-full grid grid-cols-2">
-        <div className="bg-white">
-          <Image
-            src={data.pokemon.image}
-            alt={data.pokemon.name}
-            width={200}
-            height={200}
-          />
+      <div className="w-full grid grid-cols-2 rounded-xl overflow-hidden bg-white">
+        <div className="">
+          <div className="flex justify-center p-6 ">
+            <Image
+              src={data.pokemon.image}
+              alt={data.pokemon.name}
+              className="rounded-lg"
+              width={400}
+              height={400}
+            />
+          </div>
         </div>
-        <div className="bg-blue-400">d</div>
+        <div className="p-4 flex flex-col gap-4">
+          <h1 className="text-6xl">{data.pokemon.name}</h1>
+          <div>
+            <div className=" flex flex-wrap flex-row gap-4 ">
+              {data.pokemon.types.map((type) => (
+                <TypePokemon type={type} key={type} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
