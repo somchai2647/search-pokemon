@@ -13,7 +13,7 @@ interface Props {
 
 export default function MiniInfo({ pokemon }: Props) {
   return (
-    <div className="flex flex-col gap-1 h-full justify-center drop-shadow-lg p-2 bg-white rounded-xl hover:cursor-pointer">
+    <div className="flex flex-col gap-1 h-full justify-between drop-shadow-lg p-4 bg-white rounded-xl hover:cursor-pointer">
       <div className="flex justify-center">
         <Image
           src={pokemon.image}

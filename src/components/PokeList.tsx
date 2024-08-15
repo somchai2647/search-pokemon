@@ -32,7 +32,7 @@ export default function PokeList({}: Props) {
     <div>
       <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
         {data.pokemons.map((pokemon) => (
-          <Link key={pokemon.id} href={`/?q=${pokemon.name}`} >
+          <Link key={pokemon.id} href={`/?q=${pokemon.name}`}>
             <MiniInfo pokemon={pokemon} />
           </Link>
         ))}

@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="p-4 md:p-16">
+        <main className="p-4 md:p-16 ">
           <Providers>
             <h1 className="text-7xl font-bold text-center my-8">
               Pokemon Search
