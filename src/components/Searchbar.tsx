@@ -12,15 +12,22 @@ export default function Searchbar({}: Props) {
   const router = useRouter();
   const name = useSearchParams().get("q");
 
-  const [search, setSearch] = useState(name || "");
+  const [search, setSearch] = useState("");
 
   function onClickSearch() {
-    if (search === "") return;
-    router.push(`/?q=${search}`);
+    if (search === "") {
+      router.replace("/");
+      return;
+    }
+    router.replace(`/?q=${search}`);
   }
 
   useEffect(() => {
-    if(!name) setSearch("");
+    if (!name) {
+      setSearch("");
+    } else {
+      setSearch(name);
+    }
   }, [name]);
 
   return (

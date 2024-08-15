@@ -41,6 +41,7 @@ const GetByName = gql`
 `;
 
 const query = {
+  GetList,
   GetByName,
 };
 
