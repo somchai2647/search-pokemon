@@ -12,11 +12,11 @@ export default function NotFound({}: Props) {
             404
           </h1>
           <p className="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl ">
-            We can't find pokemon you're looking for.
+            We can&apos;t find pokemon you&apos;re looking for.
           </p>
           <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-            Sorry, we can't find that page. You'll find lots to explore on the
-            home page.{"{"}" "{"}"}
+            Sorry, we can&apos;t find that page. You&apos;ll find lots to explore on the
+            home page.{"{"}&quot; &quot;{"}"}
           </p>
           <Link
             href="/"
