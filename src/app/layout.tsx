@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
 import Searchbar from "@/components/Searchbar";
+import Providers from "@/components/Provider";
 
 const inter = Kanit({
   subsets: ["thai", "latin"],
@@ -25,11 +26,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main className="p-4 md:p-24">
-          <h1 className="text-4xl font-bold text-center my-8">
-            Pokemon Search
-          </h1>
-          <Searchbar />
-          {children}
+          <Providers>
+            <h1 className="text-4xl font-bold text-center my-8">
+              Pokemon Search
+            </h1>
+            <Searchbar />
+            {children}
+          </Providers>
         </main>
       </body>
     </html>
