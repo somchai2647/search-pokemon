@@ -12,6 +12,7 @@ import type { PokemonResponseSingle } from "@/interface/pokemon.interface";
 import TypePokemon from "@/components/TypePokemon";
 import MiniInfo from "@/components/MiniInfo";
 import NotFound from "@/components/NotFound";
+import Loading from '@/components/Loading';
 
 type Props = {};
 
@@ -28,7 +29,7 @@ export default function Details({}: Props) {
 
   if (!name) return null;
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
   if (!data?.pokemon) return <NotFound />;
 
