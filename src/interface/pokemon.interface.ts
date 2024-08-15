@@ -7,36 +7,31 @@ export interface PokemonResponseMultiple {
 }
 
 export interface Pokemon {
-  __typename: string;
-  id: string;
-  name: string;
-  types: string[];
-  attacks: Attacks;
-  evolutions: Evolution[];
-}
-
-export interface Attacks {
-  __typename: string;
-  fast: Fast[];
-  special: Special[];
-}
-
-export interface Fast {
-  __typename: string;
-  name: string;
-  type: string;
-  damage: number;
-}
-
-export interface Special {
-  __typename: string;
-  name: string;
-  type: string;
-  damage: number;
-}
-
-export interface Evolution {
-  __typename: string;
-  id: string;
-  name: string;
-}
+    id: string
+    name: string
+    image: string
+    types: string[]
+    attacks: Attacks
+    evolutions: Evolution[]
+  }
+  
+  export interface Attacks {
+    fast: Fast[]
+    special: Special[]
+  }
+  
+  export interface Fast {
+    name: string
+    damage: number
+  }
+  
+  export interface Special {
+    name: string
+    damage: number
+  }
+  
+  export interface Evolution {
+    name: string
+    image: string
+    types: string[]
+  }

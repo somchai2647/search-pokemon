@@ -6,6 +6,7 @@ const GetByName = gql`
       id
       name
       types
+      image
       attacks {
         fast {
           name
@@ -19,8 +20,9 @@ const GetByName = gql`
         }
       }
       evolutions {
-        id
         name
+        image
+        types
       }
     }
   }
