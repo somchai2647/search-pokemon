@@ -1,4 +1,7 @@
-import Detail from "@/components/Details";
+"use client";
+import Dynamic from 'next/dynamic';
+
+const Detail = Dynamic(() => import('@/components/Details'));
 
 export default function Home() {
   return (
