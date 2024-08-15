@@ -1,22 +1,19 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+import React, { Suspense } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
 import { useQuery } from "@apollo/client";
 import { query } from "@/share/pokemon";
 
 import type { PokemonResponseMultiple } from "@/interface/pokemon.interface";
 
-import TypePokemon from "@/components/TypePokemon";
 import MiniInfo from "@/components/MiniInfo";
 import NotFound from "@/components/NotFound";
 import Loading from "@/components/Loading";
 
 type Props = {};
 
-export default function PokeList({}: Props) {
+function PokeList({}: Props) {
   const { loading, error, data } = useQuery<PokemonResponseMultiple>(
     query.GetList,
     {
@@ -38,5 +35,13 @@ export default function PokeList({}: Props) {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function PokeListWrapper() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <PokeList />
+    </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -8,7 +8,7 @@ import SearchSVG from "@/svg/search.svg";
 
 type Props = {};
 
-export default function Searchbar({}: Props) {
+function Searchbar({}: Props) {
   const router = useRouter();
   const name = useSearchParams().get("q");
 
@@ -62,5 +62,13 @@ export default function Searchbar({}: Props) {
         </div>
       </div>
     </>
+  );
+}
+
+export default function SearchbarWrapper() {
+  return (
+    <Suspense fallback={null}>
+      <Searchbar />
+    </Suspense>
   );
 }

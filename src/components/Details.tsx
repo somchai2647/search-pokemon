@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -16,7 +16,7 @@ import Loading from "@/components/Loading";
 
 type Props = {};
 
-export default function Details({}: Props) {
+function Details({}: Props) {
   const name = useSearchParams().get("q");
 
   const { loading, error, data } = useQuery<PokemonResponseSingle>(
@@ -112,5 +112,13 @@ export default function Details({}: Props) {
         </div>
       </div>
     </>
+  );
+}
+
+export default function DetailsWrapper() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <Details />
+    </Suspense>
   );
 }
