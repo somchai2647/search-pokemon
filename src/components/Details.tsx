@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import { useQuery } from "@apollo/client";
@@ -32,7 +33,6 @@ export default function Details({}: Props) {
 
   return (
     <>
-      {JSON.stringify(data)}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden bg-white">
         <div className="">
           <div className="flex justify-center p-6 ">
@@ -77,14 +77,18 @@ export default function Details({}: Props) {
               </ul>
             </div>
           </div>
-          <div>
-            <h2 className="text-3xl">Evolutions</h2>
-            <div className="flex flex-row gap-4">
-              {data.pokemon.evolutions.map((evolution) => (
-               <MiniInfo pokemon={evolution} key={evolution.id} />
-              ))}
+          {data.pokemon.evolutions && (
+            <div>
+              <h2 className="text-3xl">Evolutions</h2>
+              <div className="flex flex-row gap-4 mt-4">
+                {data.pokemon.evolutions.map((evolution) => (
+                  <Link key={evolution.id} href={`/?q=${evolution.name}`} className="hover:scale-110">
+                    <MiniInfo pokemon={evolution} />
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>
