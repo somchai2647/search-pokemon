@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -18,6 +18,10 @@ export default function Searchbar({}: Props) {
     if (search === "") return;
     router.push(`/?q=${search}`);
   }
+
+  useEffect(() => {
+    if(!name) setSearch("");
+  }, [name]);
 
   return (
     <>
