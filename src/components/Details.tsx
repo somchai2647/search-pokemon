@@ -77,15 +77,26 @@ export default function Details({}: Props) {
               </ul>
             </div>
           </div>
-          {data.pokemon.evolutions && (
+          {data.pokemon.evolutions && data.pokemon.evolutions.length > 0 ? (
             <div>
               <h2 className="text-3xl">Evolutions</h2>
               <div className="flex flex-row gap-4 mt-4">
                 {data.pokemon.evolutions.map((evolution) => (
-                  <Link key={evolution.id} href={`/?q=${evolution.name}`} className="hover:scale-110">
+                  <Link
+                    key={evolution.id}
+                    href={`/?q=${evolution.name}`}
+                    className="hover:scale-110"
+                  >
                     <MiniInfo pokemon={evolution} />
                   </Link>
                 ))}
+              </div>
+            </div>
+          ) : (
+            <div>
+              <h2 className="text-3xl">Evolutions</h2>
+              <div className="flex flex-row gap-4 mt-4">
+                <p>This Pokémon does not have evolutions</p>
               </div>
             </div>
           )}

@@ -1,18 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import PokeballSVG from "@/svg/pokeball.svg";
 import SearchSVG from "@/svg/search.svg";
-
 
 type Props = {};
 
 export default function Searchbar({}: Props) {
   const router = useRouter();
+  const name = useSearchParams().get("q");
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(name || "");
 
   function onClickSearch() {
     if (search === "") return;
@@ -35,6 +35,7 @@ export default function Searchbar({}: Props) {
             type="text"
             placeholder="Search for Pokémon"
             className="bg-white h-14 w-full px-12 rounded-lg focus:outline-none"
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <span className="absolute top-4 right-5 border-l pl-4">
