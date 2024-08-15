@@ -1,5 +1,16 @@
 import { gql } from "@apollo/client";
 
+const GetList = gql`
+  query GetPokemons($first: Int!) {
+    pokemons(first: $first) {
+      id
+      name
+      types
+      image
+    }
+  }
+`;
+
 const GetByName = gql`
   query GetPokemon($name: String!) {
     pokemon(name: $name) {
